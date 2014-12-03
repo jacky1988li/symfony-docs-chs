@@ -1,18 +1,11 @@
-The Big Picture
-===============
+概述
+====
 
-Start using Symfony in 10 minutes! This chapter will walk you through the most
-important concepts behind Symfony and explain how you can get started quickly
-by showing you a simple project in action.
+花10分钟上手Symfony：本文将向你介绍Symfony几个最重要的概念，并用一个简单的例子来演示如何基于Symfony进行Web开发。
 
-If you've used a web framework before, you should feel right at home with
-Symfony. If not, welcome to a whole new way of developing web applications.
+如果你之前使用过其他的Web开发框架（译注：如RoR、Django、Spring等），那你对Symfony的开发风格一定不会感到陌生。
 
-The only technical requisite to follow this tutorial is to have **PHP 5.4 or higher
-installed on your computer**. If you use a packaged PHP solution such as WAMP,
-XAMP or MAMP, check out that they are using PHP 5.4 or a more recent version.
-You can also execute the following command in your terminal or command console
-to display the installed PHP version:
+在阅读本文之前，请确保你的机器上安装了 **5.4及以上版本的PHP** 。如果你用的是WAMP、XAMP或MAMP之类的一键安装包，也请确认其捆绑的PHP版本是否足够新。你可以用下面的命令行指令来检查PHP的版本：
 
 .. code-block:: bash
 
@@ -20,14 +13,12 @@ to display the installed PHP version:
 
 .. _installing-symfony2:
 
-Installing Symfony
-------------------
+安装Symfony
+-----------
 
-In the past, Symfony had to be installed manually for each new project. Now you
-can use the **Symfony Installer**, which has to be installed the very first time
-you use Symfony on a computer.
+过去，你需要为每个项目分别手动安装一次Symfony；现在， **Symfony安装工具** 使安装过程变得更加轻松了。
 
-On **Linux** and **Mac OS X** systems, execute the following console commands:
+在 **Linux** 或者 **Mac OS X** 系统上，你可以运行下面的命令行指令来获得Symfony安装工具：
 
 .. code-block:: bash
 
@@ -36,86 +27,72 @@ On **Linux** and **Mac OS X** systems, execute the following console commands:
 
 .. note::
 
-    If your system doesn't have cURL installed, execute the following
-    commands instead:
+    如果你的系统上没有安装cURL，你可以改用下面的指令：
 
     .. code-block:: bash
 
         $ php -r "readfile('http://symfony.com/installer');" > symfony.phar
         $ sudo mv symfony.phar /usr/local/bin/symfony
 
-After installing the Symfony installer, you'll have to open a new console window
-to be able to execute the new ``symfony`` command:
+上述指令成功运行后，你（可能）需要进入新打开的命令行窗口，以使 ``symfony`` 命令生效。
 
 .. code-block:: bash
 
     $ symfony
 
-On **Windows** systems, execute the following console command:
+在 **Windows** 系统上，运行下面的指令即可：
 
 .. code-block:: bash
 
     c:\> php -r "readfile('http://symfony.com/installer');" > symfony.phar
 
-This command downloads a file called ``symfony.phar`` which contains the Symfony
-installer. Save or move that file to the directory where you create the Symfony
-projects and then, execute the Symfony installer right away with this command:
+上述指令将下载一个名为 ``symfony.phar`` 的文件，文件里包含了Symfony安装工具。把这个文件移动到你打算创建Symfony项目的目录，如果要在C盘根目录下使用这个工具，则调用方式为：
 
 .. code-block:: bash
 
     c:\> php symfony.phar
 
-Creating Your First Symfony Project
------------------------------------
+创建你的第一个Symfony项目
+-------------------------
 
-Once the Symfony Installer is set up, use the ``new`` command to create new
-Symfony projects. Let's create a new project called ``myproject``:
+确认能正常调用Symfony安装工具了，你就可以使用其提供的 ``new`` 选项来创建新的Symfony项目。我们下面把示例项目命名为 ``myproject`` ：
 
 .. code-block:: bash
 
-    # Linux and Mac OS X
+    # Linux 或 Mac OS X
     $ symfony new myproject
 
     # Windows
     c:\> php symfony.phar new myproject
 
-This command downloads the latest Symfony stable version and creates an empty
-project in the ``myproject/`` directory so you can start developing your
-application right away.
+上述指令将下载最新稳定版的Symfony，并在 ``myproject/`` 文件夹里初始化一个空的项目——好了，你可以开始写代码了！
 
 .. _running-symfony2:
 
-Running Symfony
----------------
+运行Symfony
+-----------
 
-This tutorial leverages the internal web server provided by PHP to run Symfony
-applications. Therefore, running a Symfony application is a matter of browsing
-the project directory and executing this command:
+本文介绍的，是使用PHP自带的Web服务器来运行Symfony。你只需要进入Symfony项目代码所在的目录，执行下面的指令：
 
 .. code-block:: bash
 
     $ cd myproject/
     $ php app/console server:run
 
-Open your browser and access the ``http://localhost:8000`` URL to see the
-Welcome page of Symfony:
+然后打开浏览器，访问 ``http://localhost:8000`` ，你将能看到Symfony的欢迎页：
 
 .. image:: /images/quick_tour/welcome.png
    :align: center
    :alt:   Symfony Welcome Page
 
-Congratulations! Your first Symfony project is up and running!
+热烈祝贺！你的第一个Symfony项目运行起来了！
 
 .. note::
 
-    Instead of the welcome page, you may see a blank page or an error page.
-    This is caused by a directory permission misconfiguration. There are several
-    possible solutions depending on your operating system. All of them are
-    explained in the :ref:`Setting up Permissions <book-installation-permissions>`
-    section of the official book.
+    如果你看到的是空白页或错误信息页，而不是上图所示的欢迎页，很有可能是因为文件权限的问题。
+    针对部分操作系统，我们提供了解决这个问题的办法： :ref:`Setting up Permissions <book-installation-permissions>`
 
-When you are finished working on your Symfony application, you can stop the
-server with the ``server:stop`` command:
+关闭这个Web服务非常简单：
 
 .. code-block:: bash
 
@@ -123,37 +100,24 @@ server with the ``server:stop`` command:
 
 .. tip::
 
-    If you prefer a traditional web server such as Apache or Nginx, read the
-    :doc:`/cookbook/configuration/web_server_configuration` article.
+    如果你偏好通过Apache或Nginx这类专门的Web服务器来运行Symfony，你可以参考：
+    :doc:`/cookbook/configuration/web_server_configuration` 。
 
-Understanding the Fundamentals
-------------------------------
+了解基本概念
+------------
 
-One of the main goals of a framework is to keep your code organized and to allow
-your application to evolve easily over time by avoiding the mixing of database
-calls, HTML tags and other PHP code in the same script. To achieve this goal
-with Symfony, you'll first need to learn a few fundamental concepts.
+使用开发框架的主要目的之一是使你的代码组织结构更好，在应用程序的开发、维护过程中，避免数据库操作、HTML和业务逻辑等等不同方面的代码混在一起。要通过使用Symfony来达成这个目标，你首先需要了解一些基本的概念。
 
-When developing a Symfony application, your responsibility as a developer is to
-write the code that maps the user's *request* (e.g. ``http://localhost:8000/``)
-to the *resource* associated with it (the ``Welcome to Symfony!`` HTML page).
+开发一个Symfony项目，程序员所需要做的，是把用户的 *请求* （比如，欢迎页的地址： ``http://localhost:8000/`` ）指向与其相关的 *资源* （比如，欢迎页的内容）。
 
-The code to execute is defined in **actions** and **controllers**. The mapping
-between user's requests and that code is defined via the **routing** configuration.
-And the contents displayed in the browser are usually rendered using **templates**.
+响应用户请求的目标代码，构成 **动作** 和 **控制器** 。而将代码与用户的请求对应起来的，是被称为 **路由规则** 的配置。最终显示在浏览器里的内容，一般是通过 **模板** 来输出的。
 
-When you browsed ``http://localhost:8000/`` earlier, Symfony executed the
-controller defined in the ``src/AppBundle/Controller/DefaultController.php``
-file and rendered the ``app/Resources/views/default/index.html.twig`` template.
-In the following sections you'll learn in detail the inner workings of Symfony
-controllers, routes and templates.
+当你访问 ``http://localhost:8000/`` 时，Symfony执行了在 ``src/AppBundle/Controller/DefaultController.php`` 文件里定义的控制器，并输出了由 ``app/Resources/views/default/index.html.twig`` 模板渲染的内容。接下来，你将了解到更多关于Symfony控制器、路由、模板的内部细节。
 
-Actions and Controllers
-~~~~~~~~~~~~~~~~~~~~~~~
+动作与控制器
+~~~~~~~~~~~~
 
-Open the ``src/AppBundle/Controller/DefaultController.php`` file and you'll see
-the following code (for now, don't look at the ``@Route`` configuration because
-that will be explained in the next section)::
+打开 ``src/AppBundle/Controller/DefaultController.php`` 文件，你会看到如下的代码（暂时不必关心 ``@Route`` 这个配置，后面会再讲到）： ::
 
     namespace AppBundle\Controller;
 
@@ -171,9 +135,8 @@ that will be explained in the next section)::
         }
     }
 
-In Symfony applications, **controllers** are usually PHP classes whose names are
-suffixed with the ``Controller`` word. In this example, the controller is called
-``Default`` and the PHP class is called ``DefaultController``.
+在Symfony项目里， **控制器** 一般被编写为命名包含 ``Controller`` 后缀的PHP类。
+在这个例子里，控制器的名字是 ``Default`` ，PHP类命名为 ``DefaultController`` 。
 
 The methods defined in a controller are called **actions**, they are usually
 associated with one URL of the application and their names are suffixed with

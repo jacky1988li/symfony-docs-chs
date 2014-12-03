@@ -1,5 +1,5 @@
-The Quick Tour
-==============
+快速入门
+========
 
 .. toctree::
    :maxdepth: 1
